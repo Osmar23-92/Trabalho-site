@@ -70,7 +70,7 @@
   <div class="navbar">
     <a href="#inicio">Início</a>
     <a href="#produtos" onclick="abrirProdutos()">Produtos</a>
-    <a href="#carrinho">Carrinho <span id="contador" class="contador">0</span></a>
+    <a href="#carrinho" onclick="abrirCarrinho()">Carrinho <span id="contador" class="contador">0</span></a>
   </div>
 
   <div class="content">
@@ -84,12 +84,15 @@
       <p>Nosso cupcake: um pedaço da sua infância</p>
     </section>
 
-    <section id="carrinho">
-      <h2 style="color:#8b004f;">Seu Carrinho</h2>
-      <ul id="listaCarrinho"></ul>
-      <p id="total">Total: R$ 0,00</p>
-      <button id="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
-    </section>
+    <div id="carrinho" class="overlay">
+  <div class="modal">
+    <a href="#" class="close" onclick="fecharCarrinho()">Fechar</a>
+    <h2 style="color:#8b004f;">Seu Carrinho</h2>
+    <ul id="listaCarrinho"></ul>
+    <p id="total">Total: R$ 0,00</p>
+    <button id="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+  </div>
+</div>
   </div>
 
   <div id="produtos" class="overlay">
@@ -109,6 +112,10 @@
       <div class="produto"><img src="img/cpconfete.jpg" alt="cupcake confete" width="80" height="100"> <span>Confete - R$ 5,00</span><button onclick="adicionarCarrinho('Cupcake de Confete',5)">Adicionar</button></div>
       <div class="produto"><img src="img/cpmenta.jpg" alt="cupcake menta" width="80"> <span>Menta - R$ 5,50</span><button onclick="adicionarCarrinho('Cupcake de Menta',5.5)">Adicionar</button></div>
     </div>
+  </div >
+
+  <div >
+
   </div>
 
   <script>
@@ -122,6 +129,15 @@
       document.getElementById('produtos').style.display = 'none';
       
     }
+
+    function abrirCarrinho() {
+      document.getElementById('carrinho').style.display = 'flex';
+    }
+    function fecharCarrinho() {
+      document.getElementById('carrinho').style.display = 'none';
+      
+    }
+
     function adicionarCarrinho(item, preco) {
       const lista = document.getElementById('listaCarrinho');
       const li = document.createElement('li');
